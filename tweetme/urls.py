@@ -16,6 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf import settings
+from django.conf.urls.static import static
+
+from .views import home
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home, name='home'),
 ]
+
+
+# dong nay dung de khi viet css tren local sau do chay lenh "python manage.py collectstatic" auto copy css tu local sang serve
+if settings.DEBUG:
+    urlpatterns += (static(settings.STATIC_URL, document_root=settings.STATIC_ROOT))
+
+
