@@ -10,5 +10,5 @@ class Tweet(models.Model):
     create = models.DateTimeField(auto_created=True)
 
     def __str__(self):
-        return str(self.title)
+        return str(self.title.encode('utf8'))
 
